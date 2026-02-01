@@ -15,11 +15,6 @@ const TimelineHeader = () => {
 
   return (
     <HeaderContainer>
-      <Title>
-        Исторические
-        <br />
-        даты
-      </Title>
       {!isMobile && (
         <DecorativeLine>
           <LineSvg viewBox="0 0 5 120" fill="none">
@@ -44,6 +39,12 @@ const TimelineHeader = () => {
           </LineSvg>
         </DecorativeLine>
       )}
+
+      <Title>
+        Исторические
+        <br />
+        даты
+      </Title>
     </HeaderContainer>
   );
 };

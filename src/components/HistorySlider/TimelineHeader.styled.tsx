@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled('div')({
+  display: 'flex',
+  gap: '78px',
   position: 'relative',
+  alignItems: 'center',
   zIndex: 2,
 });
 
@@ -17,11 +20,9 @@ export const Title = styled('h1')({
 });
 
 export const DecorativeLine = styled('div')({
-  position: 'absolute',
   height: '120px',
-  left: '-78px',
-  top: '7px',
   width: '5px',
+  flexShrink: 0,
 });
 
 export const LineSvg = styled('svg')({

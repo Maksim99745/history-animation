@@ -84,6 +84,7 @@ export const InactiveDot = styled('div')({
   borderRadius: '50%',
   backgroundColor: '#42567A',
   opacity: 1,
+  margin: '0 auto', // Центрирование внутри DotWrapper
 });
 
 export const DotLabel = styled('div')({

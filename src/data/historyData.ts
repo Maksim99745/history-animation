@@ -60,25 +60,25 @@ export const historyData: HistoryData = {
     },
     {
       id: 3,
-      startYear: 2000,
+      startYear: 2005,
       endYear: 2010,
       category: 'culture',
       events: [
-        {
-          date: '2000',
-          description: 'Открытие музея Гуггенхайма в Бильбао',
-        },
-        {
-          date: '2003',
-          description: 'Запуск iTunes Store - революция в музыкальной индустрии',
-        },
         {
           date: '2005',
           description: 'Открытие музея современного искусства в Нью-Йорке',
         },
         {
+          date: '2006',
+          description: 'Запуск Twitter - новая платформа для микроблогов',
+        },
+        {
           date: '2007',
           description: 'Первый iPhone - начало эры смартфонов',
+        },
+        {
+          date: '2008',
+          description: 'Запуск Spotify - революция в музыкальном стриминге',
         },
         {
           date: '2010',

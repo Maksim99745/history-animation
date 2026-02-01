@@ -18,9 +18,10 @@ import {
 interface CircularTimelineProps {
   segments: TimeSegment[];
   activeSegmentId: number;
+  onSegmentChange?: (segmentId: number) => void;
 }
 
-const CircularTimeline = ({ segments, activeSegmentId }: CircularTimelineProps) => {
+const CircularTimeline = ({ segments, activeSegmentId, onSegmentChange }: CircularTimelineProps) => {
   const orbitRef = useRef<HTMLDivElement>(null);
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
   const categoryLabelRef = useRef<HTMLDivElement>(null);
@@ -33,7 +34,9 @@ const CircularTimeline = ({ segments, activeSegmentId }: CircularTimelineProps) 
   const getDotPosition = (index: number) => {
     const startAngle = -45;
     const angle = ((index * angleStep + startAngle) * Math.PI) / 180;
-    const radius = 264.5; // Радиус круга
+    const radius = 264.5; // Радиус круга (r="264.5" в SVG)
+    // Центр круга в SVG: cx="268" cy="265", но относительно TimelineContainer центр на 265px
+    // Поэтому радиус должен быть точно 264.5px от центра
     const x = radius * Math.cos(angle);
     const y = radius * Math.sin(angle);
     return { x, y };
@@ -99,9 +102,9 @@ const CircularTimeline = ({ segments, activeSegmentId }: CircularTimelineProps) 
   return (
     <TimelineContainer>
       <OrbitWrapper>
-        <CircleSvg viewBox="0 0 536 530" fill="none">
+        <CircleSvg viewBox="0 0 530 530" fill="none">
           <circle
-            cx="268"
+            cx="265"
             cy="265"
             r="264.5"
             stroke="#42567A"
@@ -124,6 +127,8 @@ const CircularTimeline = ({ segments, activeSegmentId }: CircularTimelineProps) 
                 $x={pos.x}
                 $y={pos.y}
                 $isActive={isActive}
+                onClick={() => onSegmentChange?.(segment.id)}
+                style={{ cursor: 'pointer' }}
               >
                 {isActive ? (
                   <ActiveDotContainer>

@@ -3,10 +3,11 @@ import styled from 'styled-components';
 export const PaginationContainer = styled('div')({
   display: 'flex',
   flexDirection: 'column',
-  gap: '38px',
+  gap: '20px',
   width: '120px',
-  marginTop: '40px',
   zIndex: 2,
+  marginTop: '393px',
+  marginLeft: '80px'
 });
 
 export const Counter = styled('div')({

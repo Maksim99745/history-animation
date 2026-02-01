@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
-export const EventContainer = styled('div')<{ $left: string }>(({ $left }) => ({
-  position: 'absolute',
-  left: $left,
-  top: 0,
-  width: '320px',
-}));
+export const EventContainer = styled('div')({
+  width: '100%',
+  maxWidth: '320px',
+});
 
 export const Year = styled('div')({
   fontFamily: '"Bebas Neue", sans-serif',

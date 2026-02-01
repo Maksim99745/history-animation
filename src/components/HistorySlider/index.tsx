@@ -1,5 +1,4 @@
-import { useState, useRef } from 'react';
-import type { Swiper as SwiperType } from 'swiper';
+import { useState } from 'react';
 import { historyData } from '../../data/historyData';
 import CircularTimeline from './CircularTimeline';
 import YearDisplay from './YearDisplay';
@@ -18,29 +17,8 @@ import { categoryLabels } from '../../constants/categories';
 
 const HistorySlider = () => {
   const [activeSegmentId, setActiveSegmentId] = useState(historyData.segments[0].id);
-  const swiperRef = useRef<SwiperType | null>(null);
   const activeSegment = historyData.segments.find((s) => s.id === activeSegmentId);
   const activeIndex = historyData.segments.findIndex((s) => s.id === activeSegmentId);
-
-  const handleSlideChange = (swiper: SwiperType) => {
-    const newIndex = swiper.activeIndex;
-    const newSegment = historyData.segments[newIndex];
-    if (newSegment) {
-      setActiveSegmentId(newSegment.id);
-    }
-  };
-
-  const handleSwiper = (swiper: SwiperType) => {
-    swiperRef.current = swiper;
-  };
-
-  const handlePrevious = () => {
-    swiperRef.current?.slidePrev();
-  };
-
-  const handleNext = () => {
-    swiperRef.current?.slideNext();
-  };
 
   return (
     <Container>
@@ -53,20 +31,25 @@ const HistorySlider = () => {
           <CircularTimeline
             segments={historyData.segments}
             activeSegmentId={activeSegmentId}
+            onSegmentChange={setActiveSegmentId}
           />
           {activeSegment && <YearDisplay segment={activeSegment} />}
         </TimelineWrapper>
         <PaginationControl
           currentPage={activeIndex + 1}
           totalPages={historyData.segments.length}
-          onPrevious={handlePrevious}
-          onNext={handleNext}
+          onPrevious={() => {
+            const prevIndex = activeIndex > 0 ? activeIndex - 1 : historyData.segments.length - 1;
+            setActiveSegmentId(historyData.segments[prevIndex].id);
+          }}
+          onNext={() => {
+            const nextIndex = activeIndex < historyData.segments.length - 1 ? activeIndex + 1 : 0;
+            setActiveSegmentId(historyData.segments[nextIndex].id);
+          }}
         />
-        <EventsSlider
-          segments={historyData.segments}
-          onSlideChange={handleSlideChange}
-          onSwiper={handleSwiper}
-        />
+        {activeSegment && (
+          <EventsSlider activeSegment={activeSegment} activeSegmentId={activeSegmentId} />
+        )}
       </MainContent>
     </Container>
   );
