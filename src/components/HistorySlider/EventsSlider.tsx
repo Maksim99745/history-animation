@@ -25,14 +25,23 @@ const EventsSlider = ({ activeSegment, activeSegmentId }: EventsSliderProps) => 
       
       <Swiper
         modules={[Navigation]}
-        slidesPerView={3}
         slidesPerGroup={1}
-        spaceBetween={20}
         speed={600}
         watchOverflow={true}
-        navigation={{
-          prevEl: '.swiper-button-prev-custom',
-          nextEl: '.swiper-button-next-custom',
+        breakpoints={{
+          0: {
+            slidesPerView: 1.5,
+            spaceBetween: 25,
+            navigation: false,
+          },
+          769: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            navigation: {
+              prevEl: '.swiper-button-prev-custom',
+              nextEl: '.swiper-button-next-custom',
+            },
+          },
         }}
         className="events-swiper"
         key={activeSegmentId}

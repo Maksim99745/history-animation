@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const SwiperContainer = styled('div')({
-  marginTop: '101px',
-  marginLeft: '80px',
   margin: '101px 20px 0 20px',
   display: 'flex',
   alignItems: 'center',
@@ -35,6 +33,23 @@ export const SwiperContainer = styled('div')({
       opacity: 0,
       visibility: 'hidden',
       pointerEvents: 'none',
+    },
+  },
+  '@media (max-width: 768px)': {
+    marginTop: 0,
+    marginLeft: '-20px',
+    marginRight: '-20px',
+    paddingLeft: '20px',
+    overflow: 'visible',
+    position: 'relative',
+    zIndex: 1,
+    marginBottom: 0,
+    order: 1,
+    '& .swiper-button-prev-custom, & .swiper-button-next-custom': {
+      display: 'none',
+    },
+    '& .swiper-slide:not(.swiper-slide-active)': {
+      opacity: 0.4,
     },
   },
 });

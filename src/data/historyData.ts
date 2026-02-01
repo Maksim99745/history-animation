@@ -4,34 +4,62 @@ export const historyData: HistoryData = {
   segments: [
     {
       id: 1,
-      startYear: 2016,
-      endYear: 2022,
+      startYear: 2000,
+      endYear: 2004,
       category: 'sport',
       events: [
         {
-          date: '2016',
-          description: 'Летние Олимпийские игры в Рио-де-Жанейро',
+          date: '2000',
+          description: 'Летние Олимпийские игры в Сиднее',
         },
         {
-          date: '2018',
-          description: 'Чемпионат мира по футболу в России',
+          date: '2002',
+          description: 'Зимние Олимпийские игры в Солт-Лейк-Сити',
         },
         {
-          date: '2020',
-          description: 'Летние Олимпийские игры в Токио (перенесены на 2021)',
+          date: '2002',
+          description: 'Чемпионат мира по футболу в Японии и Южной Корее',
         },
         {
-          date: '2021',
-          description: 'Чемпионат Европы по футболу',
+          date: '2004',
+          description: 'Летние Олимпийские игры в Афинах',
         },
         {
-          date: '2022',
-          description: 'Зимние Олимпийские игры в Пекине',
+          date: '2004',
+          description: 'Чемпионат Европы по футболу в Португалии',
         },
       ],
     },
     {
       id: 2,
+      startYear: 2005,
+      endYear: 2010,
+      category: 'culture',
+      events: [
+        {
+          date: '2005',
+          description: 'Открытие музея современного искусства в Нью-Йорке',
+        },
+        {
+          date: '2006',
+          description: 'Запуск Twitter - новая платформа для микроблогов',
+        },
+        {
+          date: '2007',
+          description: 'Первый iPhone - начало эры смартфонов',
+        },
+        {
+          date: '2008',
+          description: 'Запуск Spotify - революция в музыкальном стриминге',
+        },
+        {
+          date: '2010',
+          description: 'Запуск Instagram - новая эра социальных сетей',
+        },
+      ],
+    },
+    {
+      id: 3,
       startYear: 2011,
       endYear: 2015,
       category: 'cinema',
@@ -59,30 +87,30 @@ export const historyData: HistoryData = {
       ],
     },
     {
-      id: 3,
-      startYear: 2005,
-      endYear: 2010,
-      category: 'culture',
+      id: 4,
+      startYear: 2016,
+      endYear: 2022,
+      category: 'sport',
       events: [
         {
-          date: '2005',
-          description: 'Открытие музея современного искусства в Нью-Йорке',
+          date: '2016',
+          description: 'Летние Олимпийские игры в Рио-де-Жанейро',
         },
         {
-          date: '2006',
-          description: 'Запуск Twitter - новая платформа для микроблогов',
+          date: '2018',
+          description: 'Чемпионат мира по футболу в России',
         },
         {
-          date: '2007',
-          description: 'Первый iPhone - начало эры смартфонов',
+          date: '2020',
+          description: 'Летние Олимпийские игры в Токио (перенесены на 2021)',
         },
         {
-          date: '2008',
-          description: 'Запуск Spotify - революция в музыкальном стриминге',
+          date: '2021',
+          description: 'Чемпионат Европы по футболу',
         },
         {
-          date: '2010',
-          description: 'Запуск Instagram - новая эра социальных сетей',
+          date: '2022',
+          description: 'Зимние Олимпийские игры в Пекине',
         },
       ],
     },

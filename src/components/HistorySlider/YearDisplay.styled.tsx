@@ -11,7 +11,14 @@ export const YearContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: '70px',
+  gap: '80px',
+  '@media (max-width: 768px)': {
+    position: 'static',
+    transform: 'none',
+    justifyContent: 'center',
+    gap: '35px',
+    margin: 0,
+  },
 });
 
 export const YearText = styled('span')<{ $color: string }>(({ $color }) => ({
@@ -23,4 +30,9 @@ export const YearText = styled('span')<{ $color: string }>(({ $color }) => ({
   lineHeight: '160px',
   letterSpacing: '-4px',
   wordWrap: 'break-word',
+  '@media (max-width: 768px)': {
+    fontSize: '56px',
+    lineHeight: '120%',
+    letterSpacing: '-2.24px',
+  },
 }));

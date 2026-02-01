@@ -20,32 +20,27 @@ const YearDisplay = ({ segment }: YearDisplayProps) => {
       return;
     }
 
-    const startDiff = segment.startYear - prevSegment.startYear;
-    const endDiff = segment.endYear - prevSegment.endYear;
-    const startSteps = Math.abs(startDiff);
-    const endSteps = Math.abs(endDiff);
+    const animateYear = (
+      current: number,
+      target: number,
+      setter: (value: number) => void,
+      timeline: gsap.core.Timeline
+    ) => {
+      const diff = target - current;
+      const steps = Math.abs(diff);
+      if (steps === 0) return;
 
-    if (startSteps === 0 && endSteps === 0) return;
+      const direction = diff > 0 ? 1 : -1;
+      for (let i = 1; i <= steps; i++) {
+        timeline.call(() => {
+          setter(current + i * direction);
+        }, [], i * 0.05);
+      }
+    };
 
     const timeline = gsap.timeline();
-
-    if (startSteps > 0) {
-      const direction = startDiff > 0 ? 1 : -1;
-      for (let i = 1; i <= startSteps; i++) {
-        timeline.call(() => {
-          setDisplayStartYear(prevSegment.startYear + i * direction);
-        }, [], i * 0.05);
-      }
-    }
-
-    if (endSteps > 0) {
-      const direction = endDiff > 0 ? 1 : -1;
-      for (let i = 1; i <= endSteps; i++) {
-        timeline.call(() => {
-          setDisplayEndYear(prevSegment.endYear + i * direction);
-        }, [], i * 0.05);
-      }
-    }
+    animateYear(prevSegment.startYear, segment.startYear, setDisplayStartYear, timeline);
+    animateYear(prevSegment.endYear, segment.endYear, setDisplayEndYear, timeline);
   }, [segment.id]);
 
   return (

@@ -9,6 +9,9 @@ export const GridContainer = styled('div')({
   maxWidth: 'calc(100% - 33.34%)',
   pointerEvents: 'none',
   zIndex: 0,
+  '@media (max-width: 768px)': {
+    display: 'none',
+  },
 });
 
 export const GridSvg = styled('svg')({

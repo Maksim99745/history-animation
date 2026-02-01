@@ -6,6 +6,12 @@ export const Container = styled('div')({
   height: '100vh',
   overflow: 'hidden',
   background: '#F4F5F9',
+  '@media (max-width: 768px)': {
+    height: 'auto',
+    minHeight: '100vh',
+    padding: 0,
+    overflow: 'visible',
+  },
 });
 
 export const MainContent = styled('div')({
@@ -16,6 +22,15 @@ export const MainContent = styled('div')({
   padding: '0 16.67%',
   paddingTop: '170px',
   overflow: 'visible',
+  '@media (max-width: 768px)': {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    padding: '20px',
+    paddingTop: '60px',
+    paddingBottom: '80px',
+    height: 'auto',
+  },
 });
 
 export const TopSection = styled('div')({
@@ -30,4 +45,11 @@ export const TimelineWrapper = styled('div')({
   transform: 'translateX(-50%)',
   top: 'calc(50vh - 265px)',
   flexShrink: 0,
+  '@media (max-width: 768px)': {
+    position: 'static',
+    width: 'auto',
+    height: 'auto',
+    transform: 'none',
+    margin: '0 0 56px 0',
+  },
 });

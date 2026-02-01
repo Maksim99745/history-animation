@@ -6,6 +6,11 @@ export const HeaderContainer = styled('div')({
   position: 'relative',
   alignItems: 'center',
   zIndex: 2,
+  '@media (max-width: 768px)': {
+    position: 'static',
+    margin: '0 0 56px 0',
+    gap: 0,
+  },
 });
 
 export const Title = styled('h1')({
@@ -17,6 +22,12 @@ export const Title = styled('h1')({
   width: '353px',
   whiteSpace: 'pre-wrap',
   margin: 0,
+  '@media (max-width: 768px)': {
+    fontSize: '20px',
+    lineHeight: '120%',
+    width: 'auto',
+    whiteSpace: 'normal',
+  },
 });
 
 export const DecorativeLine = styled('div')({

@@ -39,47 +39,41 @@ const CircularTimeline = ({ segments, activeSegmentId, onSegmentChange }: Circul
   };
 
   useEffect(() => {
+    const timeline = gsap.timeline();
+
     if (orbitRef.current) {
-      gsap.to(orbitRef.current, {
+      timeline.to(orbitRef.current, {
         rotation: targetRotation,
         duration: 1,
         ease: 'power3.inOut',
         transformOrigin: 'center center',
-      });
+      }, 0);
     }
 
     dotsRef.current.forEach((dot) => {
-      if (!dot) return;
-      const label = dot.querySelector('[data-dot-label]') as HTMLElement;
+      const label = dot?.querySelector('[data-dot-label]') as HTMLElement;
       if (label) {
-        gsap.to(label, {
+        timeline.to(label, {
           rotation: -targetRotation,
           duration: 1,
           ease: 'power3.inOut',
           transformOrigin: 'center center',
-        });
+        }, 0);
       }
     });
 
     if (categoryLabelRef.current) {
       const startPos = getDotPosition(0);
-      if (activeIndex === -1) {
-        gsap.set(categoryLabelRef.current, {
-          left: `calc(50% + ${startPos.x}px + 28px + 20px)`,
-          top: `calc(50% + ${startPos.y}px)`,
-        });
-      } else {
-        gsap.to(categoryLabelRef.current, {
-          left: `calc(50% + ${startPos.x}px + 28px + 20px)`,
-          top: `calc(50% + ${startPos.y}px)`,
-          duration: 1,
-          ease: 'power3.inOut',
-        });
-      }
+      timeline.to(categoryLabelRef.current, {
+        left: `calc(50% + ${startPos.x}px + 28px + 20px)`,
+        top: `calc(50% + ${startPos.y}px)`,
+        duration: 1,
+        ease: 'power3.inOut',
+      }, 0);
     }
-  }, [targetRotation, activeIndex]);
+  }, [targetRotation, angleStep]);
 
-  const activeSegment = segments.find((s) => s.id === activeSegmentId);
+  const activeSegment = activeIndex !== -1 ? segments[activeIndex] : undefined;
 
   return (
     <TimelineContainer>

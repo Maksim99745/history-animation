@@ -4,6 +4,9 @@ export const TimelineContainer = styled('div')({
   position: 'relative',
   width: '530px',
   height: '530px',
+  '@media (max-width: 768px)': {
+    display: 'none',
+  },
 });
 
 export const OrbitWrapper = styled('div')({
@@ -74,7 +77,7 @@ export const InactiveDot = styled('div')({
   borderRadius: '50%',
   backgroundColor: '#42567A',
   opacity: 1,
-  margin: '0 auto', // Центрирование внутри DotWrapper
+  margin: '0 auto',
 });
 
 export const DotLabel = styled('div')({
@@ -101,4 +104,7 @@ export const CategoryLabel = styled('div')({
   alignItems: 'center',
   zIndex: 15,
   pointerEvents: 'none',
+  '@media (max-width: 768px)': {
+    display: 'none',
+  },
 });
