@@ -10,10 +10,8 @@ import {
   Container,
   MainContent,
   TopSection,
-  CategoryInfo,
   TimelineWrapper,
 } from './HistorySlider.styled';
-import { categoryLabels } from '../../constants/categories';
 
 const HistorySlider = () => {
   const [activeSegmentId, setActiveSegmentId] = useState(historyData.segments[0].id);

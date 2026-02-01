@@ -23,6 +23,9 @@ export const DecorativeLine = styled('div')({
   height: '120px',
   width: '5px',
   flexShrink: 0,
+  '@media (max-width: 768px)': {
+    display: 'none',
+  },
 });
 
 export const LineSvg = styled('svg')({

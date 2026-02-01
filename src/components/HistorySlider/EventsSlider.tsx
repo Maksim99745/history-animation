@@ -12,8 +12,6 @@ interface EventsSliderProps {
 }
 
 const EventsSlider = ({ activeSegment, activeSegmentId }: EventsSliderProps) => {
-  if (!activeSegment) return null;
-
   return (
     <SwiperContainer>
       <button

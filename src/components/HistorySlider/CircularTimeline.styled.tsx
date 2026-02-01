@@ -32,16 +32,6 @@ export const CircleSvg = styled('svg')({
   zIndex: 1,
 });
 
-export const DotsSvg = styled('svg')({
-  display: 'block',
-  width: '100%',
-  height: '100%',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  pointerEvents: 'none',
-});
-
 export const DotWrapper = styled('div')<{
   $x: number;
   $y: number;

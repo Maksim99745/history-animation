@@ -39,7 +39,6 @@ const PaginationControl = ({
           onClick={onNext}
           disabled={currentPage === totalPages}
           $disabled={currentPage === totalPages}
-          $isNext
           aria-label="Следующая страница"
         >
           <ArrowIcon viewBox="0 0 7 12" fill="none">

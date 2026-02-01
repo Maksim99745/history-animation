@@ -22,21 +22,6 @@ export const TopSection = styled('div')({
   zIndex: 2,
 });
 
-export const CategoryInfo = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '8px',
-  color: '#42567A',
-  fontSize: '20px',
-  fontFamily: '"PT Sans", sans-serif',
-  '& > span:first-child': {
-    fontWeight: '400',
-  },
-  '& > span:last-child': {
-    fontWeight: '700',
-  },
-});
-
 export const TimelineWrapper = styled('div')({
   position: 'absolute',
   width: '530px',

@@ -24,8 +24,7 @@ export const ButtonsContainer = styled('div')({
   gap: '20px',
 });
 
-export const NavButton = styled('button')<{ $disabled?: boolean; $isNext?: boolean }>(
-  ({ $disabled }) => ({
+export const NavButton = styled('button')<{ $disabled?: boolean }>(({ $disabled }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

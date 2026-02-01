@@ -25,18 +25,14 @@ const CircularTimeline = ({ segments, activeSegmentId, onSegmentChange }: Circul
   const orbitRef = useRef<HTMLDivElement>(null);
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
   const categoryLabelRef = useRef<HTMLDivElement>(null);
-  const totalSegments = segments.length;
-  const angleStep = 360 / totalSegments;
-  const startAngle = -70; // 2 часа по часовой стрелке от правой позиции
+  const angleStep = 360 / segments.length;
   const activeIndex = segments.findIndex((s) => s.id === activeSegmentId);
-  const targetRotation = activeIndex !== -1 ? -activeIndex * angleStep : 0;
+  const targetRotation = -activeIndex * angleStep;
 
   const getDotPosition = (index: number) => {
-    const startAngle = -45;
-    const angle = ((index * angleStep + startAngle) * Math.PI) / 180;
-    const radius = 264.5; // Радиус круга (r="264.5" в SVG)
-    // Центр круга в SVG: cx="268" cy="265", но относительно TimelineContainer центр на 265px
-    // Поэтому радиус должен быть точно 264.5px от центра
+    const dotStartAngle = -45;
+    const angle = ((index * angleStep + dotStartAngle) * Math.PI) / 180;
+    const radius = 264.5;
     const x = radius * Math.cos(angle);
     const y = radius * Math.sin(angle);
     return { x, y };
@@ -52,12 +48,9 @@ const CircularTimeline = ({ segments, activeSegmentId, onSegmentChange }: Circul
       });
     }
 
-    dotsRef.current.forEach((dot, i) => {
+    dotsRef.current.forEach((dot) => {
       if (!dot) return;
-
-      const isActive = i === activeIndex;
       const label = dot.querySelector('[data-dot-label]') as HTMLElement;
-
       if (label) {
         gsap.to(label, {
           rotation: -targetRotation,
@@ -68,36 +61,25 @@ const CircularTimeline = ({ segments, activeSegmentId, onSegmentChange }: Circul
       }
     });
 
-    if (categoryLabelRef.current && activeIndex !== -1) {
-      // Позиция активной точки после вращения Orbit
-      // Изначально точка на позиции activeIndex, после вращения на targetRotation
-      // она оказывается в позиции 0 (стартовая позиция)
+    if (categoryLabelRef.current) {
       const startPos = getDotPosition(0);
-      
-      gsap.to(categoryLabelRef.current, {
-        left: `calc(50% + ${startPos.x}px + 28px + 20px)`,
-        top: `calc(50% + ${startPos.y}px)`,
-        duration: 1,
-        ease: 'power3.inOut',
-      });
+      if (activeIndex === -1) {
+        gsap.set(categoryLabelRef.current, {
+          left: `calc(50% + ${startPos.x}px + 28px + 20px)`,
+          top: `calc(50% + ${startPos.y}px)`,
+        });
+      } else {
+        gsap.to(categoryLabelRef.current, {
+          left: `calc(50% + ${startPos.x}px + 28px + 20px)`,
+          top: `calc(50% + ${startPos.y}px)`,
+          duration: 1,
+          ease: 'power3.inOut',
+        });
+      }
     }
-  }, [targetRotation, activeIndex, angleStep]);
-
-  useEffect(() => {
-    // Устанавливаем начальную позицию категории
-    if (categoryLabelRef.current && activeIndex !== -1) {
-      const startPos = getDotPosition(0);
-      gsap.set(categoryLabelRef.current, {
-        left: `calc(50% + ${startPos.x}px + 28px + 20px)`,
-        top: `calc(50% + ${startPos.y}px)`,
-      });
-    }
-  }, []);
+  }, [targetRotation, activeIndex]);
 
   const activeSegment = segments.find((s) => s.id === activeSegmentId);
-  const activePos = activeSegment
-    ? getDotPosition(segments.findIndex((s) => s.id === activeSegmentId))
-    : { x: 0, y: 0 };
 
   return (
     <TimelineContainer>
