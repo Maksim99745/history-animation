@@ -11,6 +11,10 @@
 - Swiper 12.1.0
 - GSAP 3.12.5
 
+## Deploy
+
+Сссылка на деплой: https://endearing-dragon-f50828.netlify.app/
+
 ## Установка
 
 ```bash
