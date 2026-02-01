@@ -5,7 +5,7 @@ export const GridContainer = styled('div')({
   height: '100vh',
   left: '16.67%',
   top: 0,
-  width: '1440px',
+
   maxWidth: 'calc(100% - 33.34%)',
   pointerEvents: 'none',
   zIndex: 0,

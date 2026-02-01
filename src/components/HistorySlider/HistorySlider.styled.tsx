@@ -16,7 +16,7 @@ export const Container = styled('div')({
 
 export const MainContent = styled('div')({
   position: 'relative',
-  maxWidth: '1920px',
+
   margin: '0 auto',
   height: '100vh',
   padding: '0 16.67%',
