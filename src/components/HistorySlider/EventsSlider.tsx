@@ -29,7 +29,6 @@ const EventsSlider = ({ activeSegment, activeSegmentId }: EventsSliderProps) => 
         slidesPerGroup={1}
         spaceBetween={20}
         speed={600}
-        allowTouchMove={false}
         watchOverflow={true}
         navigation={{
           prevEl: '.swiper-button-prev-custom',
